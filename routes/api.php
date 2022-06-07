@@ -26,3 +26,4 @@ Route::get('/restaurants/{id?}', [AdminController::class, 'getAllRestos']);
 
 
 Route::post('/add_user', [UserController::class, 'signUp']);
+Route::get('/users/{id?}', [AdminController::class, 'getAllUsers']);
