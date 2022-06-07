@@ -65,4 +65,19 @@ class UserController extends Controller
 
 
     }
+
+    public function updateProfile(Request $request,$id){
+
+   
+        $user = User::find($id);
+         $user->name = $request->name;
+         $user->email = $request->email;
+         $user->password = $request->password;
+
+         $user->update();
+         return response()->json([
+            "status" =>  $user
+        ], 200);
+        }
+  
 }
