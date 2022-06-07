@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rating;
 use App\Models\Restaurant;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -45,5 +46,23 @@ class UserController extends Controller
         
         
     
+    }
+
+    public function addReview(Request $request){
+        $rating = new Rating();
+        $rating->stars = $request->stars;
+        $rating->reviews = $request->reviews;
+        $rating->restaurant_id = $request->restaurant_id;
+        $rating->customer_id = $request->customer_id;
+        $rating->pending = 1;
+
+        $rating->save();
+        
+        return response()->json([
+            "status" => "Rating Saved"
+        ], 200);
+
+
+
     }
 }
