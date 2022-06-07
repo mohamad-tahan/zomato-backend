@@ -14,7 +14,7 @@ class ModifyRatingsTable extends Migration
     public function up()
     {
         Schema::table('ratings', function (Blueprint $table) {
-            $table->string('pending');
+            $table->integer('pending');
         });
     }
 
