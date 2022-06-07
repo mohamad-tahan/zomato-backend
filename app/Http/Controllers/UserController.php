@@ -70,11 +70,21 @@ class UserController extends Controller
 
    
         $user = User::find($id);
-         $user->name = $request->name;
-         $user->email = $request->email;
-         $user->password =  hash("sha256", $request->password);
+        
 
-         $user->update();
+         if( $request->name){
+             $user->name =  $request->name;
+            $user->update();
+         }
+         if( $request->email){
+            $user->email =  $request->email;
+           $user->update();
+        }
+        if( $request->password){
+            $user->password =  hash("sha256", $request->password);
+           $user->update();
+        }
+         
          return response()->json([
             "status" =>  $user
         ], 200);
