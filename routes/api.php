@@ -33,3 +33,5 @@ Route::post('/signIn', [UserController::class, 'signIn']);
 Route::get('/restaurantById/{id}', [AdminController::class, 'getRestoById']);
 
 Route::post('/add_review', [UserController::class, 'addReview']);
+
+Route::get('/ratings/{id?}', [AdminController::class, 'getAllReviews']);
