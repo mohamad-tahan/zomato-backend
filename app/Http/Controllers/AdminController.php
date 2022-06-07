@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Rating;
 use App\Models\Restaurant;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -61,6 +63,21 @@ class AdminController extends Controller
             "results" => $resto
         ], 200);
 
+    }
+
+    public function getAllReviews($id = null){
+        if($id != null){
+            
+            $ratings = Rating::find($id);
+            //$restos = $restos? $restos->name : '';
+        }else{
+            $ratings = Rating::all();
+        }
+        
+        return response()->json([
+            "status" => "Success",
+            "restos" => $ratings
+        ], 200);
     }
 
 }
