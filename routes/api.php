@@ -37,3 +37,5 @@ Route::post('/add_review', [UserController::class, 'addReview']);
 Route::get('/ratings/{id?}', [AdminController::class, 'getAllReviews']);
 
 Route::get('/getAvgRatings/{id}', [AdminController::class, 'getAvgRatings']);
+
+Route::post('/updateProfile/{id}', [UserController::class, 'updateProfile']);
