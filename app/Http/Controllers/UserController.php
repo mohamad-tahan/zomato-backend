@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Restaurant;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Symfony\Component\Console\Input\Input;
 
 class UserController extends Controller
 {
@@ -22,4 +25,25 @@ class UserController extends Controller
         ], 200);
     }
    
+    public function signIn(Request $request){
+        
+        $email = $request->email;
+        $password = hash("sha256", $request->password);
+
+        $users = User::where("email", $email )->where("password", $password )->get();
+        //echo count($users);
+        if(count($users) == 0){
+        return response()->json([
+            "status" => "Not Found"
+           
+        ], 200);
+    }
+        return response()->json([
+            "status" => "User logged in"
+           
+        ], 200);
+        
+        
+    
+    }
 }
