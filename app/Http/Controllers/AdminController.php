@@ -52,4 +52,15 @@ class AdminController extends Controller
         ], 200);
     }
 
+    
+    public function getRestoById($id){
+        $resto = Restaurant::where("id", $id)->get();
+        
+        return response()->json([
+            "status" => "Success",
+            "results" => $resto
+        ], 200);
+
+    }
+
 }
