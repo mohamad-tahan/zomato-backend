@@ -80,4 +80,24 @@ class AdminController extends Controller
         ], 200);
     }
 
-}
+    public function getAvgRatings($id){
+        $ratings = Rating::where("restaurant_id", $id)->get();
+        $count = 0;
+        $stars = 0;
+        foreach($ratings as $rate){
+            
+            $stars = $rate['stars'];
+            $count++;
+            
+        }
+        $avg = $stars/$count;
+        return response()->json([
+            "status" => "Success",
+            "average ratings:" => $avg
+        ], 200);
+    }
+
+
+    }
+
+
