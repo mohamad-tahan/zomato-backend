@@ -40,7 +40,8 @@ class UserController extends Controller
         ], 200);
     }
         return response()->json([
-            "status" => "User logged in"
+            "status" => "User logged in",
+            "type" => $users[0]["usertype_id"]
            
         ], 200);
         
